@@ -33,35 +33,6 @@ Using an Isolation Forest model, AnomalyM evaluates each network flow and assign
 ### ✓ Clean JSON Reporting
 Results are exported in a structured JSON report containing both heuristic and ML findings.
 
----
-
-## Project Structure
-
-AnomalyM/
-│
-├── src/
-│ ├── cli.py # Command-line interface
-│ ├── engineering.py # Flow extraction & feature engineering
-│ ├── packet_loader.py # PCAP loading with raw packet support
-│ └── analyzers/
-│ ├── heuristics.py # Heuristic rule-based detector
-│ ├── ml_model.py # IsolationForest scoring logic
-│ └── init.py
-│
-├── models/
-│ └── isolation_forest.joblib # Machine learning model (generated after training)
-│
-├── scripts/
-│ └── train_isolation_forest.py
-│
-└── README.md
-
-
-
----
-
-## Installation
-
 ### 1. Clone the Repository
 
 ```bash
@@ -69,42 +40,39 @@ git clone https://github.com/youruser/AnomalyM
 cd AnomalyM
 
 
-Create and Activate a Virtual Environment
-python -m venv venv
-source venv/bin/activate        # Linux/macOS
-venv\Scripts\activate           # Windows
+# Create and Activate a Virtual Environment
+    python -m venv venv
+    source venv/bin/activate        # Linux/macOS
+    venv\Scripts\activate           # Windows
 
-3. Install Dependencies
+#Install Dependencies
 
-The project uses pyshark, scikit-learn, and joblib.
+**The project uses pyshark, scikit-learn, and joblib.**
 
-pip install -r requirements.txt
+      pip install -r requirements.txt
 
-Training the Machine Learning Model
+**Training the Machine Learning Model**
 
 Before running anomaly detection, you must train an Isolation Forest model using a baseline PCAP (normal traffic).
 
-Example:
 
-python -m scripts.train_isolation_forest baseline.pcap \
-    --model-path models/isolation_forest.joblib \
-    --max-packets 20000
+       **python -m scripts.train_isolation_forest baseline.pcap \ --model-path models/isolation_forest.joblib \ --max-packets 20000**
 
 
-This script:
+This:
 
-Loads packets
+1. Loads packets
 
-Converts them into flows using the feature engineering module
+2. Converts them into flows using the feature engineering module
 
-Trains an Isolation Forest model
+3. Trains an Isolation Forest model
 
-Saves the model into models/isolation_forest.joblib
+4. Saves the model into models/isolation_forest.joblib
 
-If the model is missing, ML-based anomaly detection will not run.
+# If the model is missing, ML-based anomaly detection will not run.
 
-Running the Analyzer
+5. Running the Analyzer
 
-Use the CLI to process a PCAP and generate a JSON report:
+6. Use the CLI to process a PCAP and generate a JSON report:
 
-python -m src.cli sample.pcap --output report.json --max-packets 500
+       **python -m src.cli sample.pcap --output report.json --max-packets 500**
