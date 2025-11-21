@@ -1,0 +1,43 @@
+{
+  "total_heuristics": 0,
+  "total_ml": 2,
+  "heuristics": [],
+  "ml": [
+    {
+      "score": 0.27553456429592277,
+      "summary": "ML anomaly detected",
+      "context": {
+        "flow": {
+          "src_ip": "192.168.3.10",
+          "dst_ip": "192.168.3.1",
+          "src_port": 0,
+          "dst_port": 0,
+          "protocol": "ICMP_RAW",
+          "packet_count": 5,
+          "byte_count": 370,
+          "syn_count": 0,
+          "ack_count": 0,
+          "entropy": 5.403930340177702
+        }
+      }
+    },
+    {
+      "score": 0.27553456429592277,
+      "summary": "ML anomaly detected",
+      "context": {
+        "flow": {
+          "src_ip": "192.168.3.1",
+          "dst_ip": "192.168.3.10",
+          "src_port": 0,
+          "dst_port": 0,
+          "protocol": "ICMP_RAW",
+          "packet_count": 5,
+          "byte_count": 370,
+          "syn_count": 0,
+          "ack_count": 0,
+          "entropy": 5.3981482894654285
+        }
+      }
+    }
+  ]
+}
